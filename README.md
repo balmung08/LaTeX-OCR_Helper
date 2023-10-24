@@ -35,7 +35,7 @@
 ### 项目组件简述
 * main文件提供UI界面与组件逻辑联系
 * 使用[yolov8](https://github.com/ultralytics/ultralytics)(ultralytics-main)识别出公式位置；如果不截出纯公式图，[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)会把非公式部分强行识别为公式，输出乱码
-* 使用[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)(pix2tex)识别出公式的Latex表达式，并使用optimize文件中的规则进行结果优化
+* 使用[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)(pix2tex)识别出公式的Latex表达式，并使用optimize文件中的规则进行结果优化；该模型由带有 ResNet 主干网的 ViT 编码器和 Transformer 解码器组成，详请见该项目说明文档
 * 使用matplotlib库进行公式渲染作为预览
 -----
 ### 调试遇到的问题及解决方式
