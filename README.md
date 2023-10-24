@@ -30,20 +30,20 @@
 <code>yolo task=detect mode=train model=yolov8n.yaml data=gs.yaml  batch=8 epochs=500</code>
 即可进行训练；训练生成的过程数据会保存至run文件夹下，并在主目录下生成pt模型
 * 可用的数据集生成与标注文件打包至for_datasets.zip中，使用时修改数据生成路径即可
-
 * **[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)模型的改动已经超出本项目预期，不作优化**
+-----
 ### 项目组件简述
 * main文件提供UI界面与组件逻辑联系
 * 使用[yolov8](https://github.com/ultralytics/ultralytics)(ultralytics-main)识别出公式位置；如果不截出纯公式图，[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)会把非公式部分强行识别为公式，输出乱码
 * 使用[Latex-OCR](https://github.com/lukas-blecher/LaTeX-OCR)(pix2tex)识别出公式的Latex表达式，并使用optimize文件中的规则进行结果优化
 * 使用matplotlib库进行公式渲染作为预览
-
+-----
 ### 调试遇到的问题及解决方式
 * matplotlib线程冲突报错：Tcl_AsyncDelete: async handler deleted by the wrong thread
 > 在打开实时渲染模式时使用一键模式会出现线程冲突，经排查是一键模式原本需要调用一次matplotlib渲染，随后由于公式发生改变，实时渲染模式的线程立刻也调用渲染函数，两个线程同时调用渲染导致线程冲突；故删去一键模式的渲染步骤，现在在不开启实时渲染模式的情况下一键模型仅处理到生成表达式的步骤，在开启实时渲染情况下正好完成完整流程
 * 本项目使用了较多标志位进行线程间逻辑处理，可读性较差
 > 目前没有很好的解决方案，也许使用一个文件专门储存逻辑参数或者进行更高程度的对象抽象封装可以提高可读性。~~但是为了大作业做这个有点愚蠢~~
-
+-----
 ### 附录
 > **本项目将被用于提交图像采集课程的大作业** 
 #### 可以参考的资料
