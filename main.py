@@ -128,13 +128,17 @@ def ui():
     window.resizable(False, False)
     canvas = tk.Canvas(window, width=800, height=600, bg="#F5F5F5")
     menubar = tk.Menu(window)
-    helpmenu = tk.Menu(menubar, tearoff=0)
-    menubar.add_cascade(label='关于', menu=helpmenu)
-    menubar.add_cascade(label='说明', menu=helpmenu)
+    helpmenu1 = tk.Menu(menubar, tearoff=0)
+    helpmenu2 = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label='关于', menu=helpmenu1)
+    menubar.add_cascade(label='说明', menu=helpmenu2)
     def show_rule():
         webbrowser.open("docs\\note.html")
 
-    helpmenu.add_command(label='说明', command=show_rule)
+    helpmenu1.add_command(label='文档', command=show_rule)
+    def show_md():
+        webbrowser.open("docs\\README.html")
+    helpmenu2.add_command(label='文档', command=show_md)
     window.config(menu=menubar)
     canvas.create_rectangle(250, 10, 790, 490, outline='black')
     canvas.create_line(0, 45, 160, 45)
@@ -350,8 +354,6 @@ if __name__  == '__main__':
     time.sleep(0.1)
     t3_go()
     compare_result()
-
-    #t2_go()
 
 
 
