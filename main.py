@@ -187,7 +187,7 @@ def show_prtsc(path):
     try:
         global img0,single_doing
         single_doing = True
-        model = YOLO("best.pt")  # build a YOLOv8n model from scratch
+        model = YOLO("best_update.pt")  # build a YOLOv8n model from scratch
         model.info()  # display model information
         results = model(path, conf=0.6, iou=0.3)  # 对图像进行预测
         res_plotted = results[0].plot()
